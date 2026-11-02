@@ -3,11 +3,13 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List
 
+DEFAULT_TELEMETRY_PATH = Path(__file__).resolve().parent.parent / "data" / "telemetry_logs.json"
+
 
 class TelemetryRAGEngine:
     """Offline-first deterministic RAG engine over structured field telemetry logs."""
 
-    def __init__(self, log_path: str = "data/telemetry_logs.json") -> None:
+    def __init__(self, log_path: str | Path = DEFAULT_TELEMETRY_PATH) -> None:
         self.log_path = Path(log_path)
         self.logs: List[Dict[str, Any]] = self._load_logs()
 

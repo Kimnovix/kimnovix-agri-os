@@ -20,6 +20,7 @@ USER kimnovix
 
 EXPOSE 8501 8000
 
+# Probes Streamlit (terminal service). docker-compose.yml overrides it for the webhook.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD curl -f http://localhost:8501/_stcore/health || exit 1
 

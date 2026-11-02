@@ -16,4 +16,11 @@ services:
       - "8000:8000"
     environment:
       - KIMNOVIX_MODE=${KIMNOVIX_MODE:-offline}
+    # The Dockerfile HEALTHCHECK probes Streamlit on 8501; this service serves 8000.
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
     restart: unless-stopped

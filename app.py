@@ -102,7 +102,7 @@ with tab_poultry:
         bird_wt = st.number_input("Avg Bird Weight (kg)", min_value=0.05, max_value=10.0, value=1.5, step=0.1)
 
     if st.button("Compute Flock Dosage", key="btn_poultry"):
-        constructed_query = f"poultry {compound} {int(flock_count)} {float(bird_wt)}"
+        constructed_query = f"poultry {compound} {int(flock_count)} birds {float(bird_wt)} kg"
         poultry_out = engine.process_query(constructed_query, lang=lang_choice)
         if poultry_out["status"] in ("BLOCKED", "ERROR"):
             st.error(poultry_out["response"])

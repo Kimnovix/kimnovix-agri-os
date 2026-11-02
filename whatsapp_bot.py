@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
 from src.core import KimnovixAgriOS
@@ -34,10 +34,12 @@ def health_check() -> dict[str, str]:
 
 @app.post("/webhook/whatsapp", response_model=WhatsAppOutboundResponse)
 def whatsapp_webhook(payload: WhatsAppInboundPayload) -> WhatsAppOutboundResponse:
-    """Process incoming WhatsApp message via the deterministic core router."""
+    """Process incoming WhatsApp message via the deterministic core router.
+
+    ERROR results (e.g. missing weight or compound) are returned as a normal reply
+    so the field worker sees what to resend, instead of an HTTP error with no text.
+    """
     result = engine.process_query(query=payload.message, lang=payload.lang)
-    if result["status"] == "ERROR":
-        raise HTTPException(status_code=422, detail=result["response"])
 
     return WhatsAppOutboundResponse(
         recipient=payload.sender,
