@@ -1,0 +1,19 @@
+services:
+  terminal:
+    build: .
+    container_name: kimnovix-terminal
+    ports:
+      - "8501:8501"
+    environment:
+      - KIMNOVIX_MODE=${KIMNOVIX_MODE:-offline}
+    restart: unless-stopped
+
+  webhook:
+    build: .
+    container_name: kimnovix-webhook
+    command: ["uvicorn", "whatsapp_bot:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    environment:
+      - KIMNOVIX_MODE=${KIMNOVIX_MODE:-offline}
+    restart: unless-stopped
