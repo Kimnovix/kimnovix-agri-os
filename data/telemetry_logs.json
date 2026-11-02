@@ -1,0 +1,29 @@
+[
+  {
+    "id": "TEL-2026-001",
+    "timestamp": "2026-10-28T06:30:00Z",
+    "section": "Breeding & Farrowing Unit A",
+    "species": "Swine",
+    "category": "Farrowing & Herd Health",
+    "observation": "Sow #104 completed farrowing with 13 live born piglets; ambient creep lamp stabilized at 32C.",
+    "action_taken": "Scheduled 200mg Iron Dextran IM injection for Day 3 protocol."
+  },
+  {
+    "id": "TEL-2026-002",
+    "timestamp": "2026-10-29T14:15:00Z",
+    "section": "Grower House 2",
+    "species": "Poultry",
+    "category": "Respiratory Monitoring",
+    "observation": "Mild respiratory rales observed in 100-bird broiler batch (1.5 kg avg weight); water intake normal.",
+    "action_taken": "Computed deterministic Amoxicillin 50% soluble powder dose (4.5 g/day) and logged 5-day withdrawal."
+  },
+  {
+    "id": "TEL-2026-003",
+    "timestamp": "2026-10-30T09:00:00Z",
+    "section": "Block C Forage Plot",
+    "species": "Crop",
+    "category": "Soil Moisture & Compost",
+    "observation": "Root-zone moisture dropped to 45% across 2.0 hectares of silage maize prior to tasseling.",
+    "action_taken": "Queued 1,200 m3 supplemental irrigation and 9.0 tons cured swine-manure compost application."
+  }
+]
